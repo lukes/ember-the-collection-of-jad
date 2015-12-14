@@ -1,7 +1,6 @@
-# Ember-collection-of-jad
+# The Collection of James Alfred Duncalfe
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Ember frontend for the digitised vinyl collection of James Alfred Duncalfe.
 
 ## Prerequisites
 
