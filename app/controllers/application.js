@@ -2,6 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  years: Ember.computed(function() {
+    return this.store.peekAll('release').rejectBy('year', 0).mapBy('year').uniq();
+  }),
+
   actions: {
 
     // Transition to a random release

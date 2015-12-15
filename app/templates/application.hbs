@@ -2,7 +2,14 @@
   <ul>
     <li {{action 'randomRelease'}}>Random</li>
     <li>Genre</li>
-    <li>Year</li>
+    <li>
+      Year
+      <ul>
+        {{#each year in years}}
+          <li>{{#link-to 'year' year}}{{year}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+    </li>
   </ul>
 </nav>
 <main>
