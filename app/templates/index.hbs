@@ -1,4 +1,6 @@
-{{#each release in model}}
-  {{#link-to 'release' release.id}}{{release.title}}{{/link-to}}
-{{/each}}
+<ul>
+  {{#each release in model}}
+    <li>{{#link-to 'release' release.id}}{{release.title}}{{/link-to}}</li>
+  {{/each}}
+</ul>
 {{outlet}}
