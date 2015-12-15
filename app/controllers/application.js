@@ -5,12 +5,12 @@ export default Ember.Controller.extend({
   actions: {
 
     // Transition to a random release
-    randomAlbum: function() {
+    randomRelease: function() {
       let releases = this.store.peekAll('release')
       let random = Math.floor(Math.random() * releases.get('length'))
       let release = releases.objectAt(random)
 
-      this.transitionTo('album', release)
+      this.transitionTo('release', release)
     }
 
   }

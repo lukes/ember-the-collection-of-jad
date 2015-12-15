@@ -1,4 +1,4 @@
-{{#each album in model}}
-  {{#link-to 'album' album.id}}{{album.title}}{{/link-to}}
+{{#each release in model}}
+  {{#link-to 'release' release.id}}{{release.title}}{{/link-to}}
 {{/each}}
 {{outlet}}
