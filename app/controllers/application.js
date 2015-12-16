@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   }),
 
   years: Ember.computed(function() {
-    return this.store.peekAll('release').rejectBy('year', 0).mapBy('year').uniq();
+    return this.store.peekAll('release').rejectBy('year', 0).mapBy('year').uniq().sort();
   }),
 
   actions: {
