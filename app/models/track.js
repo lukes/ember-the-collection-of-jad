@@ -6,5 +6,7 @@ export default DS.Model.extend({
   sequence: DS.attr(),
   title: DS.attr(),
 
+  audioUrl: 'https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.ogg',
+
   release: DS.belongsTo('release')
 });

@@ -1,0 +1,11 @@
+{{#if trackIsPlaying}}
+  <span {{action 'pause'}}>Pause</span>
+{{else}}
+  <span {{action 'play'}}>Play</span>
+{{/if}}
+
+{{track.position}} {{track.title}}
+
+{{#if track.duration}}
+  ({{track.duration}})
+{{/if}}

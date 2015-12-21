@@ -18,12 +18,7 @@
 
 <ul>
   {{#each track in model.tracks}}
-    <li>
-      {{track.position}} {{track.title}}
-      {{#if track.duration}}
-        ({{track.duration}})
-      {{/if}}
-    </li>
+    {{track-details track=track}}
   {{/each}}
 </ul>
 
