@@ -1,5 +1,5 @@
 <ul>
-  {{#each models as |release|}}
+  {{#each model as |release|}}
     <li>{{#link-to 'release' release.id}}{{release.title}}{{/link-to}}</li>
   {{/each}}
 </ul>
