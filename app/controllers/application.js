@@ -16,11 +16,11 @@ export default Ember.Controller.extend({
 
     // Transition to a random release
     randomRelease: function() {
-      let releases = this.store.peekAll('release')
-      let random = Math.floor(Math.random() * releases.get('length'))
-      let release = releases.objectAt(random)
+      let releases = this.store.peekAll('release');
+      let random = Math.floor(Math.random() * releases.get('length'));
+      let release = releases.objectAt(random);
 
-      this.transitionTo('release', release)
+      this.transitionTo('release', release);
     }
 
   }
