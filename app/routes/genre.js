@@ -8,7 +8,7 @@ export default Ember.Route.extend({
     let genreSlug = params.slug;
     return this.store.peekAll('release').filter((release) => {
       let releaseGenreSlugs = release.get('genres').mapBy('slug');
-      return releaseGenreSlugs.indexOf(genreSlug) >= 0
+      return releaseGenreSlugs.indexOf(genreSlug) >= 0;
     });
   }
 
