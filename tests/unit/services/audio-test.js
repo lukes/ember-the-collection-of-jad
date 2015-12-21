@@ -33,5 +33,6 @@ test('reset() should reset the service', function(assert) {
   service.play(track);
   service.reset();
   assert.equal(service.get('howl'), null);
+  assert.equal(service.get('duration'), null);
   assert.equal(service.get('track'), null);
 });
