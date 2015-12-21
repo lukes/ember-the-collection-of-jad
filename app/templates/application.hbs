@@ -5,7 +5,7 @@
       Genre
       <ul>
         {{#each genre in genres}}
-          <li>{{#link-to 'genre' genre}}{{genre}}{{/link-to}}</li>
+          <li>{{#link-to 'genre' genre.slug}}{{genre.id}}{{/link-to}}</li>
         {{/each}}
       </ul>
     </li>

@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('release', { path: 'album/:release_id'} );
-  this.route('genre', { path: 'genre/:genre' });
+  this.route('genre', { path: 'genre/:slug' });
   this.route('year', { path: 'year/:year' });
 });
 

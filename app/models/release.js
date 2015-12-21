@@ -11,6 +11,6 @@ export default DS.Model.extend({
   manual: DS.attr(),
   manual_reason: DS.attr(),
 
-  genres: DS.attr(),
-  tracks: DS.hasMany('track'),
+  genres: DS.hasMany('genre'),
+  tracks: DS.hasMany('track')
 });

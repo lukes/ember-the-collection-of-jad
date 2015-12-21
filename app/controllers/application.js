@@ -3,9 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   genres: Ember.computed(function() {
-    let arrays = this.store.peekAll('release').mapBy('genres');
-    let flattened = [].concat.apply([], arrays);
-    return Ember.A(flattened).uniq().sort();
+    return this.store.peekAll('genre').sortBy('id');
   }),
 
   years: Ember.computed(function() {
