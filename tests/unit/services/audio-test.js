@@ -13,7 +13,7 @@ test('play() should convert a track to a howl', function(assert) {
     audioUrl: audioAssetUrl
   });
   service.play(track);
-  assert.equal(service.get('howl').urls()[0], audioAssetUrl);
+  assert.equal(service.get('howl')._src, audioAssetUrl);
 });
 
 test('play() should save the track', function(assert) {

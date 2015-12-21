@@ -11,7 +11,7 @@ export default Ember.Service.extend({
     if (this.get('track') !== track) {
       this.reset();
       let howl = new Howl({
-        urls: [track.get('audioUrl')]
+        src: [track.get('audioUrl')]
       });
       howl.on('pause', () => {
         Ember.run(() => {

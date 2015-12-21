@@ -24,7 +24,7 @@ module.exports = function(defaults) {
   app.import('bower_components/pure/grids-core.css')
   app.import('bower_components/pure/grids-units.css')
   app.import('bower_components/pure/grids-responsive.css')
-  app.import('bower_components/howler.js/howler.js')
+  app.import('bower_components/howler.js/howler.core.min.js')
 
   return app.toTree();
 };
