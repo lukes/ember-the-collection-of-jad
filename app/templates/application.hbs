@@ -4,7 +4,7 @@
     <li>
       Genre
       <ul>
-        {{#each genre in genres}}
+        {{#each genres as |genre|}}
           <li>{{#link-to 'genre' genre.slug}}{{genre.id}}{{/link-to}}</li>
         {{/each}}
       </ul>
@@ -12,7 +12,7 @@
     <li>
       Year
       <ul>
-        {{#each year in years}}
+        {{#each years as |year|}}
           <li>{{#link-to 'year' year}}{{year}}{{/link-to}}</li>
         {{/each}}
       </ul>

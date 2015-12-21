@@ -17,7 +17,7 @@
 <h2>Tracks:</h2>
 
 <ul>
-  {{#each track in model.tracks}}
+  {{#each model.tracks as |track|}}
     {{track-details track=track}}
   {{/each}}
 </ul>
