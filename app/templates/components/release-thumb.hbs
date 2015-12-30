@@ -1,1 +1,9 @@
-{{#link-to 'release' release.id}}{{release.title}}{{/link-to}}
+{{#link-to 'release' release.id}}
+  <div class="release-thumb" itemscope itemtype="http://schema.org/MusicGroup">
+    <meta itemprop="thumbnail" content="{{image}}">
+    <div class="image" style="background-image:url({{image}})"></div>
+    <h2 itemprop="name">
+      {{release.title}}
+    </h2>
+  </div>
+{{/link-to}}
