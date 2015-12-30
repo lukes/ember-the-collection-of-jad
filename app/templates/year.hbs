@@ -1,6 +1,2 @@
-<ul>
-  {{#each model as |release|}}
-    <li>{{#link-to 'release' release.id}}{{release.title}}{{/link-to}}</li>
-  {{/each}}
-</ul>
+{{release-thumbs releases=model}}
 {{outlet}}
