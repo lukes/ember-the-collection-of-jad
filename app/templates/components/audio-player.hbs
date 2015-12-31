@@ -1,0 +1,8 @@
+{{#if audio.track}}
+  {{#if audio.loading}}
+    <span {{action 'pause'}}>Loading</span>
+  {{else}}
+    <span {{action 'pause'}}>Pause</span>
+  {{/if}}
+  {{audio.track.title}}
+{{/if}}
