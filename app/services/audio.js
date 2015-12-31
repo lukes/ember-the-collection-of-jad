@@ -6,11 +6,13 @@ export default Ember.Service.extend({
   howl: null,
   track: null,
   duration: null,
+  loading: false,
   playing: false,
 
   play: function(track) {
     if (this.get('track') !== track) {
       this.reset();
+      this.set('loading', true);
       let howl = new Howl({
         src: [track.get('audioUrl')]
       });
@@ -18,6 +20,7 @@ export default Ember.Service.extend({
         Ember.run(() => {
           if (!this.get('isDestroyed')) {
             this.set('duration', howl.duration());
+            this.set('loading', false);
           }
         });
       });
