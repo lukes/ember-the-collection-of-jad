@@ -1,25 +1,27 @@
-<h1>{{model.title}}</h1>
-<h2>{{model.artist}}</h2>
-<p>
+<div id="release">
+  <h1>{{model.title}}</h1>
+
   {{#if model.year}}
-    <div>{{model.year}}</div>
+    <div class="year">{{model.year}}</div>
   {{/if}}
+
+  <div class="artist">{{model.artist}}</div>
+
   {{#if model.manual}}
     <div>Manually imported. {{model.manual_reason}}</div>
   {{/if}}
   {{#if model.label}}
-    <div>
-      Label: {{model.label}} {{#if model.catno}}({{model.catno}}){{/if}}
+    <div class="label">
+      {{model.label}} {{#if model.catno}}({{model.catno}}){{/if}}
     </div>
   {{/if}}
-</p>
 
-<h2>Tracks:</h2>
+  <h2>Tracks:</h2>
 
-<ul>
-  {{#each model.tracks as |track|}}
-    {{track-details track=track}}
-  {{/each}}
-</ul>
-
-{{outlet}}
+  <ul>
+    {{#each model.tracks as |track|}}
+      {{track-details track=track}}
+    {{/each}}
+  </ul>
+  {{outlet}}
+</div>
