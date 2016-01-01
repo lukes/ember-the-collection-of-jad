@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   elementId: 'audio-player',
-  classNameBindings: 'audio.playing:playing',
+  classNameBindings: 'audio.track:visible',
 
   audio: Ember.inject.service(),
 
