@@ -13,7 +13,7 @@ export default Ember.Service.extend({
 
   play: function(track) {
     if (track && this.get('track') !== track) {
-      this.reset();
+      this._reset();
       this._setState('loading');
 
       let howl = new Howl({
@@ -57,7 +57,7 @@ export default Ember.Service.extend({
     }
   },
 
-  reset: function() {
+  _reset: function() {
     if (this.get('howl')) {
       this.get('howl').unload();
       this.set('howl', null);
@@ -74,7 +74,7 @@ export default Ember.Service.extend({
   },
 
   tearDown: Ember.on('willDestroy', function() {
-    this.reset();
+    this._reset();
   })
 
 });
