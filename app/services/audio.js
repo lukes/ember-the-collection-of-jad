@@ -10,7 +10,7 @@ export default Ember.Service.extend({
   playing: false,
 
   play: function(track) {
-    if (this.get('track') !== track) {
+    if (track && this.get('track') !== track) {
       this.reset();
       this.set('loading', true);
       let howl = new Howl({
