@@ -10,6 +10,10 @@ export default Ember.Component.extend({
 
     pause: function() {
       this.get('audio').pause();
+    },
+
+    play: function() {
+      this.get('audio').play();
     }
 
   }

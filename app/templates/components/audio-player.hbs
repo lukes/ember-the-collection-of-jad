@@ -2,7 +2,11 @@
   {{#if audio.loading}}
     <span {{action 'pause'}}>Loading</span>
   {{else}}
-    <span {{action 'pause'}}>Pause</span>
+    {{#if audio.playing}}
+      <span class='icon-pause' {{action 'pause'}}></span>
+    {{else}}
+      <span class='icon-play' {{action 'play'}}></span>
+    {{/if}}
   {{/if}}
   {{audio.track.title}}
 {{/if}}
