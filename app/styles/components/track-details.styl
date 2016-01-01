@@ -16,6 +16,20 @@
     text-transform uppercase
     margin-left 3px
 
-  [class^="icon-"]
+  .pause, .play
     font-size 24px
     margin-right 3px
+    font-family 'icomoon'
+
+  .play:before
+    content "\e903"
+
+  .pause:before
+    content "\e901"
+
+  &:hover
+    .play:before
+      content "\e902"
+    .pause:before
+      content "\e900"
+
