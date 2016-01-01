@@ -1,0 +1,23 @@
+<ul>
+  <li {{action (action this.attrs.randomRelease)}}>Random</li>
+  <li>
+    <div {{action 'show' 'genres'}}>Genre</div>
+    {{#if showGenres}}
+      <ul>
+        {{#each genres as |genre|}}
+          <li>{{#link-to 'genre' genre.slug}}{{genre.id}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </li>
+  <li>
+    <div {{action 'show' 'years'}}>Year</div>
+    {{#if showYears}}
+      <ul>
+        {{#each years as |year|}}
+          <li>{{#link-to 'year' year}}{{year}}{{/link-to}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </li>
+</ul>

@@ -1,24 +1,4 @@
-<nav>
-  <ul>
-    <li {{action 'randomRelease'}}>Random</li>
-    <li>
-      Genre
-      <ul>
-        {{#each genres as |genre|}}
-          <li>{{#link-to 'genre' genre.slug}}{{genre.id}}{{/link-to}}</li>
-        {{/each}}
-      </ul>
-    </li>
-    <li>
-      Year
-      <ul>
-        {{#each years as |year|}}
-          <li>{{#link-to 'year' year}}{{year}}{{/link-to}}</li>
-        {{/each}}
-      </ul>
-    </li>
-  </ul>
-</nav>
+{{nav-main randomRelease=(action 'randomRelease')}}
 <main>
   {{outlet}}
   {{audio-player}}
