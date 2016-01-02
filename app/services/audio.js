@@ -133,7 +133,7 @@ export default Ember.Service.extend({
     this.set('state', state);
   },
 
-  tearDown: Ember.on('willDestroy', function() {
+  _tearDown: Ember.on('willDestroy', function() {
     this._reset();
   })
 
