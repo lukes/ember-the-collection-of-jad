@@ -4,33 +4,32 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   howl: null,
-
   track: null,
   duration: null,
   time: 0,
-
   release: Ember.computed.alias('track.release'),
-
-  nextTrack: Ember.computed('track.sequence', function() {
-    let nextSequence = this.get('track.sequence') + 1;
-    if (nextSequence === this.get('release.tracks.length')) {
-      nextSequence = 0;
-    }
-    return this.get('release.tracks').objectAt(nextSequence);
-  }),
-
-  progress: Ember.computed('duration', 'time', function() {
-    if (this.get('time')) {
-      return (this.get('time') / this.get('duration')) * 100;
-    } else {
-      return 0;
-    }
-  }),
 
   state: 'unloaded',
   loading: Ember.computed.equal('state', 'loading'),
   playing: Ember.computed.equal('state', 'playing'),
   paused: Ember.computed.equal('state', 'paused'),
+
+  nextTrack: Ember.computed('track.sequence', function() {
+    if (this.get('track') === this.get('release.tracks.lastObject')) {
+      return this.get('release.tracks.firstObject');
+    } else {
+      let i = this.get('release.tracks').indexOf(this.get('track'));
+      return this.get('release.tracks').objectAt(i+1);
+    }
+  }),
+
+  progress: Ember.computed('duration', 'time', function() {
+    if (this.get('time') && this.get('duration')) {
+      return (this.get('time') / this.get('duration')) * 100;
+    } else {
+      return 0;
+    }
+  }),
 
   play: function(track) {
     if (track && this.get('track') !== track) {
