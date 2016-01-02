@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -16,7 +17,7 @@ export default DS.Model.extend({
 
   aSideTracks: Ember.computed('tracks.@each.position', function() {
     return this.get('tracks').filter((track) => {
-      return track.get('position').toLowerCase().substr(0, 1) == 'a';
+      return track.get('position').toLowerCase().substr(0, 1) === 'a';
     });
   }),
 

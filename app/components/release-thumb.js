@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   classNames: 'release-thumb-wrapper pure-u-1-1 pure-u-md-1-2 pure-u-lg-1-3',
 
   image: Ember.computed(function() {
-    return 'http://placehold.it/200x150'.htmlSafe()
+    return 'http://placehold.it/200x150'.htmlSafe();
   })
 
 });
