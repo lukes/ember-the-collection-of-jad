@@ -8,5 +8,5 @@ export default DS.Model.extend({
 
   audioUrl: 'https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.ogg',
 
-  release: DS.belongsTo('release')
+  release: DS.belongsTo('release', { async: false })
 });

@@ -11,8 +11,8 @@ export default DS.Model.extend({
   manual: DS.attr(),
   manual_reason: DS.attr(),
 
-  genres: DS.hasMany('genre'),
-  tracks: DS.hasMany('track'),
+  genres: DS.hasMany('genre', { async: false }),
+  tracks: DS.hasMany('track', { async: false }),
 
   aSideTracks: Ember.computed('tracks.@each.position', function() {
     return this.get('tracks').filter((track) => {

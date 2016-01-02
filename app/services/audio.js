@@ -5,7 +5,9 @@ export default Ember.Service.extend({
 
   howl: null,
   track: null,
+  release: Ember.computed.alias('track.release'),
   duration: null,
+
   state: 'unloaded',
   loading: Ember.computed.equal('state', 'loading'),
   playing: Ember.computed.equal('state', 'playing'),
@@ -44,6 +46,14 @@ export default Ember.Service.extend({
         });
       });
 
+      howl.on('end', () => {
+        Ember.run(() => {
+          if (!this.get('isDestroyed')) {
+            this._playNextTrack();
+          }
+        });
+      });
+
       this.set('howl', howl);
       this.set('track', track);
     }
@@ -65,6 +75,15 @@ export default Ember.Service.extend({
       this.set('state', 'unloaded');
       this.set('duration', null);
     }
+  },
+
+  _playNextTrack: function() {
+    let nextSequence = this.get('track.sequence') + 1;
+    if (nextSequence > this.get('release.tracks.length')) {
+      nextSequence = 0;
+    }
+    let nextTrack = this.get('release.tracks').objectAt(nextSequence);
+    this.play(nextTrack);
   },
 
   _setState: function(state) {
