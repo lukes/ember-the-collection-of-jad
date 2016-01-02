@@ -4,9 +4,28 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   howl: null,
+
   track: null,
-  release: Ember.computed.alias('track.release'),
   duration: null,
+  time: 0,
+
+  release: Ember.computed.alias('track.release'),
+
+  nextTrack: Ember.computed('track.sequence', function() {
+    let nextSequence = this.get('track.sequence') + 1;
+    if (nextSequence === this.get('release.tracks.length')) {
+      nextSequence = 0;
+    }
+    return this.get('release.tracks').objectAt(nextSequence);
+  }),
+
+  progress: Ember.computed('duration', 'time', function() {
+    if (this.get('time')) {
+      return (this.get('time') / this.get('duration')) * 100;
+    } else {
+      return 0;
+    }
+  }),
 
   state: 'unloaded',
   loading: Ember.computed.equal('state', 'loading'),
@@ -49,7 +68,12 @@ export default Ember.Service.extend({
       howl.on('end', () => {
         Ember.run(() => {
           if (!this.get('isDestroyed')) {
-            this._playNextTrack();
+            // Auto-play the next track if at the time this track has
+            // ended, the user hasn't selected another track
+            if (this.get('track') === track) {
+              Ember.Logger.debug('Auto-playing next track');
+              this.playNextTrack();
+            }
           }
         });
       });
@@ -67,23 +91,40 @@ export default Ember.Service.extend({
     }
   },
 
+  playNextTrack: function() {
+    this.play(this.get('nextTrack'));
+  },
+
+  // Howl doesn't allow us to receive time updates as a track is playing,
+  // so bind our own events to track time
+  _handleTimeUpdateBindings: Ember.observer('playing', function() {
+    if (this.get('playing')) {
+      this._startTimer();
+    } else {
+      this._stopTimer();
+    }
+  }),
+
   _reset: function() {
     if (this.get('howl')) {
       this.get('howl').unload();
       this.set('howl', null);
       this.set('track', null);
-      this.set('state', 'unloaded');
       this.set('duration', null);
+      this.set('state', 'unloaded');
+      this.set('time', 0);
     }
   },
 
-  _playNextTrack: function() {
-    let nextSequence = this.get('track.sequence') + 1;
-    if (nextSequence > this.get('release.tracks.length')) {
-      nextSequence = 0;
-    }
-    let nextTrack = this.get('release.tracks').objectAt(nextSequence);
-    this.play(nextTrack);
+  _startTimer: function() {
+    this.set('timer', setInterval(() => {
+      let time = parseInt(this.get('howl').seek(), 10); // Only record whole seconds
+      this.set('time', time);
+    }))
+  },
+
+  _stopTimer: function() {
+    clearInterval(this.get('timer'));
   },
 
   _setState: function(state) {
