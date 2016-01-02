@@ -25,13 +25,13 @@ test('play() should save the track', function(assert) {
   assert.equal(service.get('track'), track);
 });
 
-test('reset() should reset the service', function(assert) {
+test('_reset() should reset the service', function(assert) {
   let service = this.subject();
   let track = Ember.Object.create({
     audioUrl: 'https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.ogg'
   });
   service.play(track);
-  service.reset();
+  service._reset();
   assert.equal(service.get('howl'), null);
   assert.equal(service.get('duration'), null);
   assert.equal(service.get('track'), null);
