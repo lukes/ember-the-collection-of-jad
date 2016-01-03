@@ -117,7 +117,7 @@ export default Ember.Service.extend({
 
   _startTimer: function() {
     this.set('timer', setInterval(() => {
-      let time = parseInt(this.get('howl').seek(), 10); // Only record whole seconds
+      let time = parseFloat(this.get('howl').seek().toPrecision(2)); // Only record to 1 decimal place
       this.set('time', time);
     }));
   },
