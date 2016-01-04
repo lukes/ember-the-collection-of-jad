@@ -6,10 +6,16 @@ export default Ember.Route.extend({
   // the given slug
   model: function(params) {
     let genreSlug = params.slug;
-    return this.store.peekAll('release').filter((release) => {
-      let releaseGenreSlugs = release.get('genres').mapBy('slug');
-      return releaseGenreSlugs.indexOf(genreSlug) >= 0;
+    let genre = this.store.peekAll('genre').findBy('slug', genreSlug);
+    let releases = this.store.peekAll('release').filter((release) => {
+      let genres = release.get('genres');
+      return genres.indexOf(genre) >= 0;
     });
+
+    return {
+      genre: genre,
+      releases: releases
+    }
   }
 
 });

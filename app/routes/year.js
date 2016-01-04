@@ -4,7 +4,10 @@ export default Ember.Route.extend({
 
   model: function(params) {
     let year = parseInt(params.year);
-    return this.store.peekAll('release').filterBy('year', year);
+    return {
+      releases: this.store.peekAll('release').filterBy('year', year),
+      year: year
+    }
   }
 
 });
