@@ -3,24 +3,34 @@ html, body
 
 body
   font-size 14px
+  // background-image url(http://i.imgur.com/Vv1JuS7.jpg)
+  // background-image url(https://c1.staticflickr.com/5/4132/5042029446_ce6a0dbbb5_b.jpg)
+  // background-image url(https://ozarkunderwater.files.wordpress.com/2012/05/100_0026_dust-scratches_autocolor_autotone.jpg)
+  // background-image url(http://orig11.deviantart.net/43e0/f/2008/101/6/a/dust_by_jwjjjoj.jpg)
+  // background-image url(https://i.ytimg.com/vi/znJ5nP3aWJo/maxresdefault.jpg)
+  // background-image url(http://www.unsigneddesign.com/Scratched/5.JPG)
+  // background-image url(http://img14.deviantart.net/30a0/i/2004/221/9/5/slide_scratch_texture.jpg)
   background-image url(/assets/images/bg.jpg)
   background-position center
   background-attachment fixed
   background-size cover
   background-color #888
 
-body > .ember-view
-  flexbox()
+nav-width = 250px
 
 nav
-  flex-shrink(0)
-  width 250px
-  padding padding
+  width nav-width
+  min-height 100vh
+  position fixed
+  background-color rgba(black, .1)
+  border-right 1px solid rgba(white, .4)
   ul
     list-style none
     margin 0
     padding 0
 
 main
+  margin-left nav-width
   max-width 800px
   padding padding
+  padding-left padding * 2
