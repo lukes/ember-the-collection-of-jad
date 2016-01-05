@@ -24,10 +24,32 @@ nav
   position fixed
   background-color rgba(black, .1)
   border-right 1px solid rgba(white, .4)
+  background: -moz-linear-gradient(left, rgba(0,0,0,0) 56%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 91%, rgba(0,0,0,0.25) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(0,0,0,0) 56%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.1) 91%,rgba(0,0,0,0.25) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0,0,0,0) 56%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.1) 91%,rgba(0,0,0,0.25) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  h1
+    padding padding
+    font-weight 700
+    font-size 18px
+    text-align center
+    margin auto
+  a
+    text-decoration none
   ul
     list-style none
     margin 0
     padding 0
+    &#first-tier > li
+      padding padding
+      background-color rgba(white, .3)
+      border-bottom 1px solid rgba(black, .3)
+      font-size 16px
+      cursor pointer
+    .second-tier
+      margin-top 4px
+      > li
+        margin-top 8px
+        margin-left 8px
 
 main
   margin-left nav-width
