@@ -4,8 +4,36 @@
 
 .release-thumb-wrapper
   .release-thumb
-    padding 10px
-  .image
-    width 100%
+    padding 10px 0
+    flexbox()
+
+  a
+    text-decoration none
+    color black
+  h2
+    margin-bottom 9px
+    font-size 19px
+
+  img
+    flex-shrink(0)
+    border 1px solid black
+    width 150px
     height 150px
-    background-size cover
+    margin auto
+
+  .details
+    flex-grow(1)
+    padding-left padding
+
+  .artist, .length, .genres
+    text-transform uppercase
+    font-family 'Volkhov', serif
+    font-weight 600
+
+  .artist
+    font-size 13px
+  .length
+    font-size 10px
+  .genres
+    font-size 10px
+

@@ -1,9 +1,18 @@
 {{#link-to 'release' release.id}}
   <div class="release-thumb" itemscope itemtype="http://schema.org/MusicGroup">
     <meta itemprop="thumbnail" content="{{image}}">
-    <div class="image" style="background-image:url({{image}})"></div>
-    <h2 itemprop="name">
-      {{release.title}}
-    </h2>
+    <img class="image" src="{{image}}">
+    <div class="details">
+      <h2 itemprop="name">
+        {{release.title}}
+      </h2>
+      <div class="artist">{{release.artist}}</div>
+      <div class="length">{{release.tracks.length}} tracks</div>
+      <div class="genres">
+        {{#each release.genres as |genre|}}
+          <span class="genre">{{genre.id}}</span>
+        {{/each}}
+      </div>
+    </div>
   </div>
 {{/link-to}}
