@@ -6,6 +6,10 @@ export default Ember.Component.extend({
 
   audio: Ember.inject.service(),
 
+  progressStyle: Ember.computed('audio.progress', function() {
+    return ('width:' + this.get('audio.progress') + '%').htmlSafe();
+  }),
+
   actions: {
 
     pause: function() {
@@ -14,6 +18,14 @@ export default Ember.Component.extend({
 
     play: function() {
       this.get('audio').play();
+    },
+
+    previousTrack: function() {
+      this.get('audio').playPreviousTrack();
+    },
+
+    nextTrack: function() {
+      this.get('audio').playNextTrack();
     }
 
   }

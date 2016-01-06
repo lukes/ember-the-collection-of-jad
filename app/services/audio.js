@@ -14,13 +14,18 @@ export default Ember.Service.extend({
   playing: Ember.computed.equal('state', 'playing'),
   paused: Ember.computed.equal('state', 'paused'),
 
-  nextTrack: Ember.computed('track.sequence', function() {
-    if (this.get('track') === this.get('release.tracks.lastObject')) {
-      return this.get('release.tracks.firstObject');
-    } else {
-      let i = this.get('release.tracks').indexOf(this.get('track'));
-      return this.get('release.tracks').objectAt(i+1);
-    }
+  indexOfCurrentTrack: Ember.computed('track.id', 'release.tracks.[]', function() {
+    return this.get('release.tracks').indexOf(this.get('track'));
+  }),
+
+  previousTrack: Ember.computed('indexOfCurrentTrack', 'release.tracks.[]', function() {
+    let i = this.get('indexOfCurrentTrack');
+    return this.get('release.tracks').objectAt(i-1) || this.get('release.tracks.lastObject');
+  }),
+
+  nextTrack: Ember.computed('indexOfCurrentTrack', 'release.tracks.[]', function() {
+    let i = this.get('indexOfCurrentTrack');
+    return this.get('release.tracks').objectAt(i+1) || this.get('release.tracks.firstObject');
   }),
 
   progress: Ember.computed('duration', 'time', function() {
@@ -92,6 +97,10 @@ export default Ember.Service.extend({
 
   playNextTrack: function() {
     this.play(this.get('nextTrack'));
+  },
+
+  playPreviousTrack: function() {
+    this.play(this.get('previousTrack'));
   },
 
   // Howl doesn't allow us to receive time updates as a track is playing,

@@ -1,12 +1,44 @@
 #audio-player
-  transition margin-bottom .2s
   flexbox()
-  align-items(center)
+  transition margin-bottom .2s
   height 30px
   margin-bottom (0 - (@height + padding * 2))
   position fixed
   bottom 0
+  left 0
+  right 0
   padding padding
   background-color rgba(50, 50, 50, .2)
   &.visible
     margin-bottom 0
+
+#controls
+  flexbox()
+  flex-shrink(0)
+  align-items(center)
+  width nav-width
+
+#progress
+  flexbox()
+  flex-grow(1)
+  align-items(center)
+  padding-right padding
+  .time, .duration
+    flex-shrink(0)
+    width 35px
+    font-size 12px
+  .duration
+    text-align right
+
+#progress-indicator-wrap
+  flex-grow(1)
+
+#progress-indicator
+  width 0
+  background-color black
+  height 2px
+
+#details
+  flex-shrink(0)
+  width nav-width
+

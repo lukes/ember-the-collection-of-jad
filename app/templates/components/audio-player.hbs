@@ -1,12 +1,33 @@
 {{#if audio.track}}
-  {{#if audio.loading}}
-    <span {{action 'pause'}}>Loading</span>
-  {{else}}
-    {{#if audio.playing}}
-      <span class='icon-pause' {{action 'pause'}}></span>
-    {{else}}
-      <span class='icon-play' {{action 'play'}}></span>
-    {{/if}}
-  {{/if}}
-  {{audio.track.title}}
+  <div id="controls">
+    <div>
+      {{#unless audio.loading}}
+        <span class='icon-previous' {{action 'previousTrack'}}></span>
+      {{/unless}}
+    </div>
+    <div>
+      {{#if audio.loading}}
+        <span class='icon-loading' {{action 'pause'}}></span>
+      {{else if audio.playing}}
+        <span class='icon-pause' {{action 'pause'}}></span>
+      {{else}}
+        <span class='icon-play' {{action 'play'}}></span>
+      {{/if}}
+    </div>
+    <div>
+      {{#unless audio.loading}}
+        <span class='icon-next' {{action 'nextTrack'}}></span>
+      {{/unless}}
+    </div>
+  </div>
+  <div id="progress">
+    <div class="time">{{format-seconds audio.time}}</div>
+    <div id="progress-indicator-wrap">
+      <div id="progress-indicator" style="{{progressStyle}}"></div>
+    </div>
+    <div class="duration">{{format-seconds audio.duration}}</div>
+  </div>
+  <div id="details">
+    {{audio.track.title}}
+  </div>
 {{/if}}
