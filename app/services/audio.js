@@ -82,6 +82,17 @@ export default Ember.Service.extend({
         });
       });
 
+      howl.on('loaderror', () => {
+        Ember.run(() => {
+          if (!this.get('isDestroyed')) {
+            alert('Unable to find audio for track ' +
+              this.get('track.title') + ' (' +
+              this.get('track.id') +')'
+            );
+          }
+        });
+      });
+
       this.set('howl', howl);
       this.set('track', track);
     }
