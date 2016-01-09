@@ -15,6 +15,10 @@ export default DS.Model.extend({
   genres: DS.hasMany('genre', { async: false }),
   tracks: DS.hasMany('track', { async: false }),
 
+  image: Ember.computed(function() {
+    return 'http://placehold.it/200x150'.htmlSafe();
+  }),
+
   aSideTracks: Ember.computed('tracks.@each.position', function() {
     return this.get('tracks').filter((track) => {
       return track.get('position').toLowerCase().substr(0, 1) === 'a';
