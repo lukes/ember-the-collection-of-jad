@@ -1,4 +1,8 @@
 {{#if audio.track}}
+  <div id="details">
+    <img src="{{audio.release.image}}">
+    {{audio.track.title}}
+  </div>
   <div id="controls">
     <div>
       {{#unless audio.loading}}
@@ -26,8 +30,5 @@
       <div id="progress-indicator" style="{{progressStyle}}"></div>
     </div>
     <div class="duration">{{format-seconds audio.duration}}</div>
-  </div>
-  <div id="details">
-    {{audio.track.title}}
   </div>
 {{/if}}

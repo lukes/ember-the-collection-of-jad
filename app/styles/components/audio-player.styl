@@ -1,28 +1,50 @@
+player-height = 40px
+
 #audio-player
   flexbox()
   transition margin-bottom .2s
-  height 30px
+  height player-height
   margin-bottom (0 - (@height + padding * 2))
   position fixed
   bottom 0
   left 0
   right 0
-  padding padding
   background-color rgba(50, 50, 50, .2)
   &.visible
     margin-bottom 0
+
+#details
+  flex-shrink(0)
+  flexbox()
+  align-items(center)
+  width nav-width
+  img
+    height player-height
+    width @height
+    margin-right padding
+
+  // padding padding
 
 #controls
   flexbox()
   flex-shrink(0)
   align-items(center)
-  width nav-width
+  justify-content(space-around)
+  width 80px
+  padding padding
+  [class^="icon-"]
+    cursor pointer
+  .icon-previous, .icon-next
+    font-size 24px
+  .icon-play, .icon-pause
+    font-size 34px
+
 
 #progress
   flexbox()
   flex-grow(1)
   align-items(center)
-  padding-right padding
+  padding padding
   .time, .duration
     flex-shrink(0)
     width 35px
@@ -37,8 +59,3 @@
   width 0
   background-color black
   height 2px
-
-#details
-  flex-shrink(0)
-  width nav-width
-
