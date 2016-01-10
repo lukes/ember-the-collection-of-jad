@@ -2,5 +2,5 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'ul',
-  classNames: 'pure-g release-thumbs'
+  classNames: 'release-thumbs'
 });
