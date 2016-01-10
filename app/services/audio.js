@@ -106,6 +106,18 @@ export default Ember.Service.extend({
     }
   },
 
+  togglePlay: function() {
+    if (!this.get('howl')) {
+      return;
+    }
+
+    if (this.get('howl').playing()) {
+      this.get('howl').pause();
+    } else {
+      this.get('howl').play();
+    }
+  },
+
   playNextTrack: function() {
     this.play(this.get('nextTrack'));
   },
