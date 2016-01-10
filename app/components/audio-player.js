@@ -10,6 +10,19 @@ export default Ember.Component.extend({
     return ('width:' + this.get('audio.progress') + '%').htmlSafe();
   }),
 
+  applyKeyBindings: Ember.on('didInsertElement', function() {
+    Em.$('body').on('keyup.audioPlayer', (e) => {
+      // alert(e.which);
+      if(e.which === 32) { // Space
+        this.get('audio').togglePlay();
+      }
+    });
+  }),
+
+  removeKeyBindings: Ember.on('willDestroyElement', function() {
+    Em.$('body').off('keyup.audioPlayer');
+  }),
+
   actions: {
 
     pause: function() {
