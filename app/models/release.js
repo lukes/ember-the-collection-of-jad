@@ -15,8 +15,12 @@ export default DS.Model.extend({
   genres: DS.hasMany('genre', { async: false }),
   tracks: DS.hasMany('track', { async: false }),
 
-  image: Ember.computed(function() {
-    return 'http://placehold.it/200x150'.htmlSafe();
+  coverImage: Ember.computed(function() {
+    return 'http://blog.wanken.com/wp-content/uploads/2012/07/vintage-polish-record-covers-06.jpg'.htmlSafe();
+  }),
+
+  backImage: Ember.computed(function() {
+    return 'http://www.regalzonophone.com/images/SXLP50013%20-%20Citadel%20Highlights%20Record%20Cover%20Back.jpg'.htmlSafe();
   }),
 
   aSideTracks: Ember.computed('tracks.@each.position', function() {

@@ -1,8 +1,10 @@
 {{#if audio.track}}
-  <div id="details">
-    <img src="{{audio.release.image}}">
-    {{audio.track.title}}
-  </div>
+  {{#link-to 'release' audio.release}}
+    <div id="details">
+      <img src="{{audio.release.coverImage}}">
+      {{audio.track.title}}
+    </div>
+  {{/link-to}}
   <div id="controls">
     <div>
       {{#unless audio.loading}}

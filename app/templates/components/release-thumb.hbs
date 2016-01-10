@@ -1,12 +1,15 @@
 {{#link-to 'release' release.id}}
   <div class="release-thumb" itemscope itemtype="http://schema.org/MusicGroup">
     <meta itemprop="thumbnail" content="{{release.image}}">
-    <img src="{{release.image}}">
+    <img src="{{release.coverImage}}">
     <div class="details">
       <h2 itemprop="name">
         {{release.title}}
       </h2>
       <div class="artist">{{release.artist}}</div>
+      {{#if release.year}}
+        <div class="year">{{release.year}}</div>
+      {{/if}}
       <div class="length">{{release.tracks.length}} tracks</div>
       <div class="genres">
         {{#each release.genres as |genre|}}
