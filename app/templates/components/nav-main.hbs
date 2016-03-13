@@ -7,8 +7,7 @@
 {{/link-to}}
 
 <ul id="first-tier">
-  {{#link-to 'index'}}<li>All Albums</li>{{/link-to}}
-  <li {{action (action this.attrs.randomRelease)}}>Random Album</li>
+  {{#link-to 'index'}}<li>Index</li>{{/link-to}}
   <li>
     <div {{action 'toggle' 'genres'}}>By Genre</div>
     {{#if showGenres}}
@@ -29,4 +28,5 @@
       </ul>
     {{/if}}
   </li>
+  <li {{action (action this.attrs.randomRelease)}}>Random</li>
 </ul>
