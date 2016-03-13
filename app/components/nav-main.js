@@ -22,6 +22,18 @@ export default Ember.Component.extend({
 
     show: function(type) {
       this.set('show', type);
+    },
+
+    hide: function() {
+      this.set('show', null);
+    },
+
+    toggle: function(type) {
+      if (this.get('show') === type) {
+        this.send('hide');
+      } else {
+        this.send('show', type);
+      }
     }
 
   }

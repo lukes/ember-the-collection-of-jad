@@ -10,7 +10,7 @@
   {{#link-to 'index'}}<li>All Albums</li>{{/link-to}}
   <li {{action (action this.attrs.randomRelease)}}>Random Album</li>
   <li>
-    <div {{action 'show' 'genres'}}>By Genre</div>
+    <div {{action 'toggle' 'genres'}}>By Genre</div>
     {{#if showGenres}}
       <ul class="second-tier">
         {{#each genres as |genre|}}
@@ -20,7 +20,7 @@
     {{/if}}
   </li>
   <li>
-    <div {{action 'show' 'years'}}>By Year</div>
+    <div {{action 'toggle' 'years'}}>By Year</div>
     {{#if showYears}}
       <ul class="second-tier">
         {{#each years as |year|}}
