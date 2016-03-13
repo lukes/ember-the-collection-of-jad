@@ -15,7 +15,7 @@ export default Ember.Route.extend({
     return {
       genre: genre,
       releases: releases
-    }
+    };
   }
 
 });
