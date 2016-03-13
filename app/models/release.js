@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import ENV from 'ember-collection-of-jad/config/environment';
+const { cdnHost } = ENV;
 
 export default DS.Model.extend({
   artist: DS.attr(),
@@ -16,11 +18,27 @@ export default DS.Model.extend({
   tracks: DS.hasMany('track', { async: false }),
 
   coverImage: Ember.computed(function() {
-    return 'http://blog.wanken.com/wp-content/uploads/2012/07/vintage-polish-record-covers-06.jpg'.htmlSafe();
+    return cdnHost + '/covers/' + this.get('id') + 'f.jpg';
+  }),
+
+  coverImageSmall: Ember.computed(function() {
+    return cdnHost + '/covers/' + this.get('id') + 'fs.jpg';
   }),
 
   backImage: Ember.computed(function() {
     return 'http://www.regalzonophone.com/images/SXLP50013%20-%20Citadel%20Highlights%20Record%20Cover%20Back.jpg'.htmlSafe();
+  }),
+
+  backImageSmall: Ember.computed(function() {
+    return 'http://www.regalzonophone.com/images/SXLP50013%20-%20Citadel%20Highlights%20Record%20Cover%20Back.jpg'.htmlSafe();
+  }),
+
+  asideImage: Ember.computed(function() {
+
+  }),
+
+  bsideImage: Ember.computed(function() {
+
   }),
 
   aSideTracks: Ember.computed('tracks.@each.position', function() {
