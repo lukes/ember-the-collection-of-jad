@@ -1,4 +1,5 @@
 import Ember from 'ember';
+const { computed } = Ember;
 
 export default Ember.Component.extend({
   tagName: 'nav',
@@ -6,14 +7,14 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   show: null,
-  showGenres: Ember.computed.equal('show', 'genres'),
-  showYears: Ember.computed.equal('show', 'years'),
+  showGenres: computed.equal('show', 'genres'),
+  showYears: computed.equal('show', 'years'),
 
-  genres: Ember.computed(function() {
+  genres: computed(function() {
     return this.get('store').peekAll('genre').sortBy('id');
   }),
 
-  years: Ember.computed(function() {
+  years: computed(function() {
     return this.get('store').peekAll('release').rejectBy('year', 0).mapBy('year').uniq().sort();
   }),
 

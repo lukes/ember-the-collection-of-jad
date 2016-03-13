@@ -1,34 +1,36 @@
 /* global Howl */
 import Ember from 'ember';
 
+const { computed } = Ember;
+
 export default Ember.Service.extend({
 
   howl: null,
   track: null,
   duration: null,
   time: 0,
-  release: Ember.computed.alias('track.release'),
+  release: computed.alias('track.release'),
 
   state: 'unloaded',
-  loading: Ember.computed.equal('state', 'loading'),
-  playing: Ember.computed.equal('state', 'playing'),
-  paused: Ember.computed.equal('state', 'paused'),
+  loading: computed.equal('state', 'loading'),
+  playing: computed.equal('state', 'playing'),
+  paused: computed.equal('state', 'paused'),
 
-  indexOfCurrentTrack: Ember.computed('track.id', 'release.tracks.[]', function() {
+  indexOfCurrentTrack: computed('track.id', 'release.tracks.[]', function() {
     return this.get('release.tracks').indexOf(this.get('track'));
   }),
 
-  previousTrack: Ember.computed('indexOfCurrentTrack', 'release.tracks.[]', function() {
+  previousTrack: computed('indexOfCurrentTrack', 'release.tracks.[]', function() {
     let i = this.get('indexOfCurrentTrack');
     return this.get('release.tracks').objectAt(i-1) || this.get('release.tracks.lastObject');
   }),
 
-  nextTrack: Ember.computed('indexOfCurrentTrack', 'release.tracks.[]', function() {
+  nextTrack: computed('indexOfCurrentTrack', 'release.tracks.[]', function() {
     let i = this.get('indexOfCurrentTrack');
     return this.get('release.tracks').objectAt(i+1) || this.get('release.tracks.firstObject');
   }),
 
-  progress: Ember.computed('duration', 'time', function() {
+  progress: computed('duration', 'time', function() {
     if (this.get('time') && this.get('duration')) {
       return (this.get('time') / this.get('duration')) * 100;
     } else {
