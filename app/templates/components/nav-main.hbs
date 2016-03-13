@@ -1,11 +1,13 @@
-<h1>
-  The Collection of
-  <br>
-  James Alfred Duncalfe
-</h1>
+{{#link-to 'index'}}
+  <h1>
+    The Collection of
+    <br>
+    James Alfred Duncalfe
+  </h1>
+{{/link-to}}
 
 <ul id="first-tier">
-  <li>{{#link-to 'index'}}All Albums{{/link-to}}</li>
+  {{#link-to 'index'}}<li>All Albums</li>{{/link-to}}
   <li {{action (action this.attrs.randomRelease)}}>Random Album</li>
   <li>
     <div {{action 'show' 'genres'}}>By Genre</div>
